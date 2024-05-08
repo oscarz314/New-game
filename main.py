@@ -1,4 +1,5 @@
 import pygame
+from spaceship import Spaceship
 
 # Game settings
 screen_height = 800
@@ -6,8 +7,10 @@ screen_width = 1280
 size = (screen_width, screen_height)
 screen = pygame.display.set_mode(size)
 
-# Start screen
+# defining variables
+ship = Spaceship(0, 0)
 
+# Start screen
 
 
 run = True
@@ -21,6 +24,7 @@ while run:
 
     ## FILL SCREEN, and BLIT here ##
     screen.fill((0, 0, 0))
+    screen.blit(ship.image, ship.rect)
     pygame.display.update()
     ## END OF WHILE LOOP
 
