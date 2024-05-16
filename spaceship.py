@@ -1,5 +1,4 @@
 import pygame
-pygame.transform.scale()
 class Spaceship:
     def __init__(self, x, y):
         # Position

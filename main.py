@@ -1,5 +1,6 @@
 import pygame
-from player import Player
+import player
+import spaceship
 
 # Game settings
 screen_height = 800
@@ -7,8 +8,12 @@ screen_width = 1280
 size = (screen_width, screen_height)
 screen = pygame.display.set_mode(size)
 
-# defining variables
-p = Player(0, 0)
+# Useful variables
+screen_center = (screen_width/2, screen_height/2)
+
+# Initialize
+p = player.Player(screen_center[0], screen_center[1])
+s = spaceship.Spaceship(0, 0)
 
 # Start screen
 
@@ -16,17 +21,17 @@ p = Player(0, 0)
 run = True
 # -------- Main Program Loop -----------
 while run:
+    player.detect_player_motion(p)
     ##  ----- NO BLIT ZONE END  ----- ##
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close
             run = False
 
 
-
-
     ## FILL SCREEN, and BLIT here ##
     screen.fill((0, 0, 0))
     screen.blit(p.image, p.rect)
+    screen.blit(s.image, s.rect)
     pygame.display.update()
     ## END OF WHILE LOOP
 
