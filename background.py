@@ -1,21 +1,14 @@
 import pygame
-class Spaceship:
+class Background:
     def __init__(self, x, y):
         # Position
         self.x = x
         self.y = y
 
-        # Variables
-        self.fuel = 100
-        self.velocity = (15, "down")
-        self.health = 100
-
         # Exterior image
-        self.image = pygame.image.load("spaceship_image.png")
+        self.image = pygame.transform.scale(pygame.image.load("test_background.jpg"), (1920, 1080))
         self.image_size = self.image.get_size()
         self.rect = pygame.Rect(self.x, self.y, self.image_size[0], self.image_size[1])
 
         # Interior image
-
-
 
