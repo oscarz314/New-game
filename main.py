@@ -8,12 +8,13 @@ screen_height = 800
 screen_width = 1280
 size = (screen_width, screen_height)
 screen = pygame.display.set_mode(size)
+clock = pygame.time.Clock()
 
 # Useful variables
 screen_center = (screen_width/2, screen_height/2)
 
 # Initialize
-p = player.Player(screen_center[0], screen_center[1])
+p = player.Player(screen_center[0] - 10, screen_center[1] - 10)
 s = spaceship.Spaceship(0, 0)
 bg = background.Background(-100, -100)
 sprite_array = [s, bg]
@@ -23,7 +24,9 @@ sprite_array = [s, bg]
 run = True
 # -------- Main Program Loop -----------
 while run:
+    clock.tick(60)
     player.detect_player_motion(p, sprite_array)
+
     ##  ----- NO BLIT ZONE END  ----- ##
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close

@@ -1,11 +1,10 @@
 import pygame
-import main
 
 class Player:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.delta = 1
+        self.delta = 5
 
         self.image = pygame.transform.scale(pygame.image.load("player.png"), (100, 100))
         self.image_size = self.image.get_size()
@@ -13,17 +12,20 @@ class Player:
 
     def move_player(self, direction, sprite_array):
         if direction == "right":
-            for i in sprite_array:
+            for i in range(len(sprite_array)):
                 sprite_array[i].x -= self.delta
         if direction == "left":
-            for i in sprite_array:
+            for i in range(len(sprite_array)):
                 sprite_array[i].x += self.delta
         if direction == "up":
-            for i in sprite_array:
+            for i in range(len(sprite_array)):
                 sprite_array[i].y += self.delta
         if direction == "down":
-            for i in sprite_array:
+            for i in range(len(sprite_array)):
                 sprite_array[i].y -= self.delta
+
+        for i in range(len(sprite_array)):
+            sprite_array[i].rect = pygame.Rect(sprite_array[i].x, sprite_array[i].y, sprite_array[i].image_size[0], sprite_array[i].image_size[1])
 
         self.rect = pygame.Rect(self.x, self.y, self.image_size[0], self.image_size[1])
 
