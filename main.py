@@ -26,19 +26,27 @@ sprite_array = [s, bg]
 
 # Testing variables
 display_sanity = my_font.render(f'Sanity: {p.sanity}', True, (255, 0, 0))
+display_ship_stats = my_font.render(f'fuel: {s.fuel}, velocity:{s.velocity}, health:{s.health}', True, (0, 0 , 255))
 
 
 # Start screen
+
+
+
 
 
 run = True
 # -------- Main Program Loop -----------
 while run:
     clock.tick(60)
-    functions.entropy(p.sanity, time_start)
-    player.detect_player_motion(p, sprite_array)
+    player.detect_player_input(p, sprite_array)
 
-    print(p.sanity)
+    if int(time.time()) - time_start == 1:
+        functions.entropy(p, s)
+        display_sanity = my_font.render(f'Sanity: {p.sanity}', True, (255, 0, 0))
+        time_start = int(time.time())
+
+
     ##  ----- NO BLIT ZONE END  ----- ##
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close
@@ -51,6 +59,7 @@ while run:
     screen.blit(p.image, p.rect)
     screen.blit(s.image, s.rect)
     screen.blit(display_sanity, (1200, 700))
+    screen.blit(display_ship_stats, (1000, 600))
     pygame.display.update()
     ## END OF WHILE LOOP
 

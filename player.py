@@ -1,5 +1,4 @@
 import pygame
-import time
 
 class Player:
     def __init__(self, x, y):
@@ -10,6 +9,8 @@ class Player:
 
         # player stats
         self.sanity = 80
+        self.health = 100
+        self.hunger = 100
 
         # player image
         self.image = pygame.transform.scale(pygame.image.load("player.png"), (200, 200))
@@ -38,7 +39,8 @@ class Player:
     def health(self, sanity):
         sanity -= 1
 
-def detect_player_motion(player, sprite_array):
+def detect_player_input(player, sprite_array):
+    # player movement
     keys = pygame.key.get_pressed()  # checking pressed keys
     if keys[pygame.K_d]:
         player.move_player("right", sprite_array)
@@ -46,5 +48,9 @@ def detect_player_motion(player, sprite_array):
         player.move_player("left", sprite_array)
     if keys[pygame.K_w]:
         player.move_player("up", sprite_array)
+    if keys[pygame.K_s]:
+        player.move_player("down", sprite_array)
+
+    # repair
     if keys[pygame.K_s]:
         player.move_player("down", sprite_array)
