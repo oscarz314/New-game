@@ -1,4 +1,5 @@
 import pygame
+import maintenance
 
 class Player:
     def __init__(self, x, y):
@@ -52,5 +53,5 @@ def detect_player_input(player, sprite_array):
         player.move_player("down", sprite_array)
 
     # repair
-    if keys[pygame.K_s]:
-        player.move_player("down", sprite_array)
+    if keys[pygame.K_r]:
+        maintenance.repairing()

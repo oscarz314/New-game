@@ -41,7 +41,7 @@ while run:
     clock.tick(60)
     player.detect_player_input(p, sprite_array)
 
-    if int(time.time()) - time_start == 1:
+    if int(time.time()) - time_start >= 1:
         functions.entropy(p, s)
         display_sanity = my_font.render(f'Sanity: {p.sanity}', True, (255, 0, 0))
         time_start = int(time.time())
