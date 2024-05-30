@@ -4,6 +4,7 @@ import player
 import spaceship
 import background
 import functions
+import machine
 
 # Game settings
 pygame.font.init()
@@ -22,7 +23,8 @@ time_start = int(time.time())
 p = player.Player(screen_center[0] - 10, screen_center[1] - 10)
 s = spaceship.Spaceship(0, 0)
 bg = background.Background(-100, -100)
-sprite_array = [s, bg]
+machine = machine.Machine(100 , 100)
+sprite_array = [s, bg, machine]
 
 # Testing variables
 display_sanity = my_font.render(f'Sanity: {p.sanity}', True, (255, 0, 0))
@@ -44,6 +46,8 @@ while run:
     if int(time.time()) - time_start >= 1:
         functions.entropy(p, s)
         display_sanity = my_font.render(f'Sanity: {p.sanity}', True, (255, 0, 0))
+        display_ship_stats = my_font.render(f'fuel: {s.fuel}, velocity:{s.velocity}, health:{s.health}', True,
+                                            (0, 0, 255))
         time_start = int(time.time())
 
 
@@ -56,6 +60,7 @@ while run:
     ## FILL SCREEN, and BLIT here ##
     screen.fill((0, 0, 0))
     screen.blit(bg.image, bg.rect)
+    screen.blit(machine.image, machine.rect)
     screen.blit(p.image, p.rect)
     screen.blit(s.image, s.rect)
     screen.blit(display_sanity, (1200, 700))
