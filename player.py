@@ -1,5 +1,7 @@
 import pygame
 import functions
+import asyncio
+
 
 class Player:
     def __init__(self, x, y):
