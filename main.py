@@ -24,6 +24,7 @@ p = player.Player(screen_center[0] - 10, screen_center[1] - 10)
 s = spaceship.Spaceship(0, 0)
 bg = background.Background(-100, -100)
 machine = machine.Machine(100 , 100)
+machine2 = machine.Machine(200 , 100)
 sprite_array = [s, bg, machine]
 
 # Testing variables
@@ -32,15 +33,11 @@ display_ship_stats = my_font.render(f'fuel: {s.fuel}, velocity:{s.velocity}, hea
 
 
 # Start screen
-
-
-
-
-
 run = True
 # -------- Main Program Loop -----------
 while run:
     clock.tick(60)
+    print(clock)
     player.detect_player_input(p, sprite_array)
 
     if int(time.time()) - time_start >= 1:
@@ -61,6 +58,7 @@ while run:
     screen.fill((0, 0, 0))
     screen.blit(bg.image, bg.rect)
     screen.blit(machine.image, machine.rect)
+    screen.blit(machine2.image, machine2.rect)
     screen.blit(p.image, p.rect)
     screen.blit(s.image, s.rect)
     screen.blit(display_sanity, (1200, 700))
@@ -71,3 +69,5 @@ while run:
 # Once we have exited the main program loop we can stop the game engine:
 pygame.quit()
 
+
+# instead of using time to wait I can use frames as timer.

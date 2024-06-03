@@ -19,21 +19,17 @@ def repairing():
     for i in range(10):
         arrow_series.append(arrows[random.randint(0, 3)])
 
-    # print series
     i = 1
+    keys = pygame.key.get_pressed()  # checking pressed keys
     while i != len(arrow_series):
-        if keys[pygame.K_d]:
-            input = "right"
-        if keys[pygame.K_a]:
-            input = "left"
-        if keys[pygame.K_w]:
-            input = "up"
-        if keys[pygame.K_s]:
-            input = "down"
+
+        # print series
         if int(time.time()) - time_start == 1:
             print(arrow_series[i])
             time_start = int(time.time())
             i += 1
+
+    return 100
 
 
 
