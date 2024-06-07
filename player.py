@@ -16,7 +16,7 @@ class Player:
         self.hunger = 100
 
         # player image
-        self.image = pygame.transform.scale(pygame.image.load("player.png"), (200, 200))
+        self.image = pygame.transform.scale(pygame.image.load("player.png"), (256, 256))
         self.image_size = self.image.get_size()
         self.rect = pygame.Rect(self.x, self.y, self.image_size[0], self.image_size[1])
 

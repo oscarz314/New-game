@@ -5,6 +5,7 @@ import spaceship
 import background
 import functions
 import machine
+import world
 
 # Game settings
 pygame.font.init()
@@ -24,13 +25,13 @@ p = player.Player(screen_center[0] - 10, screen_center[1] - 10)
 s = spaceship.Spaceship(0, 0)
 bg = background.Background(-100, -100)
 machine = machine.Machine(100 , 100)
-machine2 = machine.Machine(200 , 100)
 sprite_array = [s, bg, machine]
+floor = world.Floor(0, 0)
 
 # Testing variables
 display_sanity = my_font.render(f'Sanity: {p.sanity}', True, (255, 0, 0))
 display_ship_stats = my_font.render(f'fuel: {s.fuel}, velocity:{s.velocity}, health:{s.health}', True, (0, 0 , 255))
-
+world = world.make_world(10, 7)
 
 # Start screen
 run = True
@@ -56,9 +57,10 @@ while run:
 
     ## FILL SCREEN, and BLIT here ##
     screen.fill((0, 0, 0))
-    screen.blit(bg.image, bg.rect)
+    for i in range(len(world)):
+        for j in range(len(world)):
+            screen.blit(world[i][j].image, world[i][j].rect)
     screen.blit(machine.image, machine.rect)
-    screen.blit(machine2.image, machine2.rect)
     screen.blit(p.image, p.rect)
     screen.blit(s.image, s.rect)
     screen.blit(display_sanity, (1200, 700))
