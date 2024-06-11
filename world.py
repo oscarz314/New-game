@@ -41,11 +41,11 @@ def make_world(size_x, size_y):
         tile_y += 128
         tile_x = 0
     f = open("map.txt", "a")
+    f.truncate(0)
     for i in range(len(world_map_simplified)):
         f.write(str(world_map_simplified[i]) + "\n")
     f.close()
 
     return world_map
 
-def render_world():
 

@@ -54,6 +54,3 @@ def detect_player_input(player, sprite_array):
     if keys[pygame.K_s]:
         player.move_player("down", sprite_array)
 
-    # repair
-    if keys[pygame.K_r]:
-        functions.repairing()
