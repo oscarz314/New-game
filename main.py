@@ -44,7 +44,7 @@ display_ship_stats = my_font.render(f'fuel: {s.fuel}, velocity:{s.velocity}, hea
 display_lose = my_font.render(f'YOU LOST', True, (255, 0, 0))
 
 
-# functions
+# Functions
 # repairing variables and function
 repairing = False
 arrows = ["left", "right", "up", "down"]
@@ -102,31 +102,29 @@ while run:
         if arrow_series[arrow_series_index] == "up" and keys[pygame.K_UP]:
             is_synced[0] = "synced"
             is_synced[1] = (0, 255, 0)
-            sync_score += 1
 
         if arrow_series[arrow_series_index] == "left" and keys[pygame.K_LEFT]:
             is_synced[0] = "synced"
             is_synced[1] = (0, 255, 0)
-            sync_score += 1
 
         if arrow_series[arrow_series_index] == "down" and keys[pygame.K_DOWN]:
             is_synced[0] = "synced"
             is_synced[1] = (0, 255, 0)
-            sync_score += 1
 
         if arrow_series[arrow_series_index] == "right" and keys[pygame.K_RIGHT]:
             is_synced[0] = "synced"
             is_synced[1] = (0, 255, 0)
-            sync_score += 1
 
         if frame_time % 30 == 0:
             arrow_series_index += 1
+            if is_synced[0] == "synced":
+                sync_score += 10
             is_synced[0] = "not synced"
             is_synced[1] = (255, 0, 0)
-            sync_score += 1
 
         if arrow_series_index == len(arrow_series):
-            p.health += (sync_score / 10) * 40
+            print(sync_score)
+            s.health += sync_score
             arrow_series = []
             arrow_series_index = 0
             round_generated = False

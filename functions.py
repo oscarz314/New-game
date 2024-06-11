@@ -7,6 +7,8 @@ import player
 def entropy(player, ship):
     player.sanity -= 1
     ship.health -= 1
+    if ship.health > 100:
+        ship.health = 100
 
 
 
