@@ -24,6 +24,7 @@ class StatusBar:
         self.image_size = self.image.get_size()
         self.rect = pygame.Rect(self.x, self.y, self.image_size[0], self.image_size[1])
 
+
 class Arrows:
     def __init__(self, x, y, direction):
         # Position
@@ -40,5 +41,38 @@ class Arrows:
         if direction == "right":
             self.image = pygame.image.load("right_arrow.png")
 
+        self.image_size = self.image.get_size()
+        self.rect = pygame.Rect(self.x, self.y, self.image_size[0], self.image_size[1])
+
+
+class Bed:
+    def __init__(self, x, y):
+        # Position
+        self.x = x
+        self.y = y
+
+        self.image = pygame.image.load("bed.png")
+        self.image_size = self.image.get_size()
+        self.rect = pygame.Rect(self.x, self.y, self.image_size[0], self.image_size[1])
+
+
+class Background:
+    def __init__(self, x, y):
+        # Position
+        self.x = x
+        self.y = y
+
+        self.image = pygame.image.load("stars.png")
+        self.image_size = self.image.get_size()
+        self.rect = pygame.Rect(self.x, self.y, self.image_size[0], self.image_size[1])
+
+
+class Meteor:
+    def __init__(self, x, y):
+        # Position
+        self.x = x
+        self.y = y
+
+        self.image = pygame.image.load("meteor.png")
         self.image_size = self.image.get_size()
         self.rect = pygame.Rect(self.x, self.y, self.image_size[0], self.image_size[1])

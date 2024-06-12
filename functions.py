@@ -9,6 +9,9 @@ def entropy(player, ship):
     ship.health -= 1
     if ship.health > 100:
         ship.health = 100
+    if player.sanity > 100:
+        player.sanity = 100
+
 
 
 

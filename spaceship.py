@@ -7,7 +7,7 @@ class Spaceship:
 
         # Variables
         self.fuel = 100
-        self.velocity = (15, "down")
+        self.velocity = 15
         self.health = 100
 
         # Exterior image
