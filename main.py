@@ -41,7 +41,7 @@ world = world.make_world(8, 6)
 status_bar = game_objects.StatusBar(940, 550)
 bed = game_objects.Bed(400, 500)
 background = game_objects.Background(-screen_center[0], -screen_center[1])
-meteor = game_objects.Meteor(random.randint(200, 1080), -800)
+meteor = game_objects.Meteor(random.randint(-200, 1200), -800)
 sprite_array = [s, machine, bed, meteor]
 for i in range(len(world)):
     for j in range(len(world)):
@@ -122,7 +122,7 @@ while run:
         meteor.rect = pygame.Rect(meteor.x, meteor.y, meteor.image_size[0], meteor.image_size[1])
         meteor_cooldown = True
         if frame_time % 60 == 0:
-            meteor.x = random.randint(200, 1080)
+            meteor.x = random.randint(-200, 1200)
             meteor.y = -800
             meteor_exploded = False
     else:
@@ -147,6 +147,7 @@ while run:
             p.x = bed.x - 64
             p.y = bed.y - 64
             p.rect = pygame.Rect(p.x, p.y, p.image_size[0], p.image_size[1])
+            distance_from_destination -= s.velocity * 3
             p.sanity += 30
             s.health -= 20
 
